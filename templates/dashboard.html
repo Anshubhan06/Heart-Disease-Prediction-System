@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Healthcare Dashboard</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-icon">🏥</div>
+    <span class="nav-logo-text">AI Healthcare</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="predict.html">Heart Risk Check</a></li>
+    <li><a href="bmi.html">BMI</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="predict.html">Predict Again</a>
+  <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="dashboard-header">
+  <div class="container">
+    <h1>📊 AI Healthcare Dashboard</h1>
+    <p>Your personalised heart disease risk assessment</p>
+  </div>
+</div>
+
+<div class="dashboard-body">
+  <div class="container">
+    <div id="dashboardResult">
+
+      <div class="dashboard-grid">
+
+        <!-- Patient Summary -->
+        <div class="d-card">
+          <h2>Patient summary</h2>
+          <div class="patient-info-grid">
+            <div class="info-row"><span class="info-label">Age</span><span class="info-val" id="pAge">—</span></div>
+            <div class="info-row"><span class="info-label">Gender</span><span class="info-val" id="pGender">—</span></div>
+            <div class="info-row"><span class="info-label">Blood Pressure</span><span class="info-val" id="pBP">—</span></div>
+            <div class="info-row"><span class="info-label">Cholesterol</span><span class="info-val" id="pChol">—</span></div>
+            <div class="info-row"><span class="info-label">Chest Pain</span><span class="info-val" id="pCP">—</span></div>
+            <div class="info-row"><span class="info-label">Max Heart Rate</span><span class="info-val" id="pHR">—</span></div>
+          </div>
+        </div>
+
+        <!-- Prediction Result -->
+        <div class="d-card">
+          <h2>Prediction result</h2>
+          <div class="prediction-result">
+            <div id="riskBadge" class="risk-badge risk-low"><span class="risk-dot"></span>Loading...</div>
+            <p id="riskExplain" class="result-explain"></p>
+          </div>
+        </div>
+
+        <!-- Confidence Score -->
+        <div class="d-card">
+          <h2>Model confidence</h2>
+          <div style="text-align:center;padding:16px 0;">
+            <div class="confidence-num" id="confNum">—</div>
+            <div class="confidence-label">Based on Random Forest predict_proba()</div>
+          </div>
+        </div>
+
+        <!-- Risk Meter -->
+        <div class="d-card">
+          <h2>Risk meter</h2>
+          <div class="risk-meter">
+            <div class="meter-row" id="meterLowRow">
+              <div class="meter-dot" style="background:#16a34a;"></div>
+              <span class="meter-label" style="color:#16a34a;">Low</span>
+              <div class="meter-bar-wrap"><div class="meter-bar" id="meterLow"></div></div>
+            </div>
+            <div class="meter-row" id="meterModRow">
+              <div class="meter-dot" style="background:#d97706;"></div>
+              <span class="meter-label" style="color:#d97706;">Moderate</span>
+              <div class="meter-bar-wrap"><div class="meter-bar" id="meterMod"></div></div>
+            </div>
+            <div class="meter-row" id="meterHighRow">
+              <div class="meter-dot" style="background:#dc2626;"></div>
+              <span class="meter-label" style="color:#dc2626;">High</span>
+              <div class="meter-bar-wrap"><div class="meter-bar" id="meterHigh"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Recommendations -->
+      <div class="d-card recs-section">
+        <h2>AI Recommendations</h2>
+        <div class="recs-grid" id="recommendations"></div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer-box">
+        ⚠️ <strong>Disclaimer:</strong> This prediction is generated using Machine Learning and is intended for educational purposes only. The model achieves approximately 79.6% accuracy. Please consult a qualified healthcare professional for any medical diagnosis or treatment decisions.
+      </div>
+
+      <!-- Buttons -->
+      <div class="dashboard-btns">
+        <a class="btn-primary" href="predict.html">🔄 Predict Again</a>
+        <a class="btn-outline" href="index.html">🏠 Back to Home</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">🏥 AI Healthcare</div>
+      <div class="footer-tagline">Precision you can trust. Care you can feel.</div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 AI Healthcare</span>
+    <span>Built with Python • Flask • Scikit-learn • Random Forest | Dataset: UCI Cleveland Heart Disease</span>
+  </div>
+</footer>
+
+<script src="../static/js/script.js"></script>
+</body>
+</html>
