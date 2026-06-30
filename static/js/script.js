@@ -33,37 +33,31 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 });
 
 // Prediction form with loading animation
+// Prediction form with loading animation
 const predictForm = document.getElementById('predictForm');
-if (predictForm) {
-  predictForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const overlay = document.getElementById('loadingOverlay');
-    const bar = document.getElementById('progressBar');
-    overlay.classList.add('active');
-    setTimeout(() => { bar.style.width = '100%'; }, 50);
-    setTimeout(() => {
-      // collect form data and store in sessionStorage for dashboard
-      const fd = new FormData(predictForm);
-      const data = {};
-      fd.forEach((v, k) => data[k] = v);
-      // simple mock prediction based on risk factors
-      let riskScore = 0;
-      if (parseInt(data.age) > 55) riskScore += 2;
-      if (data.gender === '1') riskScore += 1;
-      if (parseInt(data.cp) >= 2) riskScore += 2;
-      if (parseInt(data.trestbps) > 140) riskScore += 2;
-      if (parseInt(data.chol) > 240) riskScore += 2;
-      if (data.fbs === '1') riskScore += 1;
-      if (parseInt(data.thalach) < 140) riskScore += 2;
-      if (data.exang === '1') riskScore += 2;
-      data.prediction = riskScore >= 6 ? 'high' : 'low';
-      data.confidence = riskScore >= 6 ? (75 + Math.floor(Math.random()*15)) : (72 + Math.floor(Math.random()*18));
-      sessionStorage.setItem('patientData', JSON.stringify(data));
-      window.location.href = 'dashboard.html';
-    }, 1800);
-  });
-}
 
+if (predictForm) {
+
+    predictForm.addEventListener('submit', function(e) {
+
+        e.preventDefault();
+
+        const overlay = document.getElementById('loadingOverlay');
+        const bar = document.getElementById('progressBar');
+
+        overlay.classList.add('active');
+
+        setTimeout(() => {
+            bar.style.width = '100%';
+        }, 50);
+
+        setTimeout(() => {
+            this.submit();
+        }, 1800);
+
+    });
+
+}
 // Dashboard — load results
 if (document.getElementById('dashboardResult')) {
   const raw = sessionStorage.getItem('patientData');
